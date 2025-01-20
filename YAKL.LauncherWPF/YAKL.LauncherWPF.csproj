@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="mods_submenu.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="mods_submenu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\YAKL.Core\YAKL.Core.csproj" />
   </ItemGroup>
 

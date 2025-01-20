@@ -7,45 +7,68 @@
         xmlns:local="clr-namespace:YAKL.LauncherWPF"
         mc:Ignorable="d"
         x:Name="mainWindow"
-        Title="MainWindow" Height="760" Width="966">
+        Title="MainWindow" Height="780" Width="984">
     <Window.Resources>
         <local:BoolToAsteriskConverter x:Key="BoolToAsteriskConverter" />
+        <local:PathToImageConverter x:Key="PathToImageConverter" />
+
+        <BitmapImage x:Key="menuImage" UriSource="mods_submenu.png" />
     </Window.Resources>
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="c:\\Users\\adams\\Downloads\\mods_submenu.png"  TileMode="None" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="{StaticResource menuImage}"  TileMode="None" Stretch="UniformToFill" />
         </Grid.Background>
 
-        <StackPanel Orientation="Vertical" Margin="61,59,705,-49" Width="270">
-            <ListBox x:Name="lbMods" SelectedValue="{Binding SelectedMod}" ItemsSource="{Binding Mods}" Width="270">
+        <StackPanel Orientation="Vertical" Margin="61,59,635,83" Width="270" CanVerticallyScroll="True">
+            <ListBox x:Name="lbMods" SelectedValue="{Binding SelectedMod}" ItemsSource="{Binding Mods}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0" />
+                </ListBox.BorderBrush>
                 <ListBox.Background>
                     <SolidColorBrush Color="White" Opacity="0" />
                 </ListBox.Background>
                 <d:ListBox.ItemsSource>
                     <x:Array Type="{x:Type ya:LocalMod}">
                         <ya:LocalMod Name="Seattle" />
-                        <ya:LocalMod Name="London" />
+                        <ya:LocalMod Name="London Very long test to test" />
                         <ya:LocalMod Name="Panama" />
                     </x:Array>
                 </d:ListBox.ItemsSource>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Width="250">
-                            <TextBlock Text="{Binding Name}" Foreground="Red" />
+                        <StackPanel Orientation="Horizontal" Width="230">
+                            <TextBlock Text="{Binding Name}" Foreground="Red" Width="230" />
                             <TextBlock Text="{Binding NeedUpdate, Converter={StaticResource BoolToAsteriskConverter}}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Content="Launch game" Command="{Binding LaunchGame}" Width="100" />
+            <Button Content="Launch game" Command="{Binding LaunchGame}" Width="100">
+                <Button.Background>
+                    <SolidColorBrush Opacity="0" />
+                </Button.Background>
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="Red" />
+                </Button.BorderBrush>
+                <Button.Foreground>
+                    <SolidColorBrush Color="Red" />
+                </Button.Foreground>
+            </Button>
         </StackPanel>
-        <StackPanel Orientation="Vertical" DataContext="{Binding SelectedMod}" Margin="400,46,66,-46" Width="500">
-            <TextBlock Text="{Binding Name}" Foreground="Red" Height="40" />
-            <Image Source="{Binding PreviewPngPath}" Width="300" Height="400" />
-            <TextBlock Text="{Binding Description}" Foreground="Red" />
+        <Grid DataContext="{Binding SelectedMod}" Margin="400,46,66,-46" Width="500">
+            <TextBlock Text="{Binding Name}" d:Text="Mod name" Foreground="Red" Height="40" Margin="0,0,0,704" />
+            <Image Source="{Binding PreviewPngPath}" Width="480" Height="400" Stretch="None" Margin="11,33,9,311" />
+            <ScrollViewer Margin="0,492,10,123" VerticalScrollBarVisibility="Auto" Width="527">
+                <TextBlock Text="{Binding Description}" d:Text="Mod description" Foreground="Red" FontSize="8" Width="527" />
+            </ScrollViewer>
 
-            <Button Foreground="Red"  Content="Update" Command="{Binding UpdateMod}" DataContext="{Binding DataContext, ElementName=mainWindow}"  CommandParameter="{Binding SelectedMod}">
+            <Button Foreground="Red"  Content="Update" Command="{Binding UpdateMod}" DataContext="{Binding DataContext, ElementName=mainWindow}"  CommandParameter="{Binding SelectedMod}" Margin="163,646,196,70" Width="140" Height="30">
                 <Button.Background>
                     <SolidColorBrush Opacity="0" />
                 </Button.Background>
@@ -53,6 +76,6 @@
                     <SolidColorBrush Color="Red" />
                 </Button.BorderBrush>
             </Button>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Window>

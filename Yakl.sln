@@ -5,9 +5,14 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YaklConsolePOC", "YaklConsolePOC\YaklConsolePOC.csproj", "{64121C91-48C2-4AFF-A367-0C96F7AC1F17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAKL.LauncherWPF", "YAKL.LauncherWPF\YAKL.LauncherWPF.csproj", "{7EA1D36A-08DA-4AD2-A07D-DD6404E1E0F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YAKL.LauncherWPF", "YAKL.LauncherWPF\YAKL.LauncherWPF.csproj", "{7EA1D36A-08DA-4AD2-A07D-DD6404E1E0F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAKL.Core", "YAKL.Core\YAKL.Core.csproj", "{C5A76264-040D-4230-862B-55CD695F9C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YAKL.Core", "YAKL.Core\YAKL.Core.csproj", "{C5A76264-040D-4230-862B-55CD695F9C29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F0347F6B-E37D-4B0C-A0D2-89DE949C1386}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
